@@ -10,7 +10,9 @@ module HnHistory
     format :json
 
     require 'hn_history/api/entries'
-    mount HnHistory::API::Entries
+    require 'hn_history/api/photos'
+    mount Entries
+    mount Photos
   end
 
   class BaseAPI < Grape::API
