@@ -1,2 +1,2 @@
-require 'hn_history/api'
+require 'hn_history/app'
 run app
