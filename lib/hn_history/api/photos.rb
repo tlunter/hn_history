@@ -7,6 +7,10 @@ class Photos < Grape::API
         @entry ||= HnHistory::Models::Entry.get(params[:id])
       end
 
+      def last_date
+        HnHistory::Models::Photos.max(:created_at)
+      end
+
       def require_entry!
         error!("Entry does not exist") unless entry
       end
@@ -20,6 +24,11 @@ class Photos < Grape::API
       require_entry!
 
       present HnHistory::Models::Photo.all(entry: entry), with: Entities::Photo
+    end
+
+    desc "Get the latest photo"
+    get 'latest' do
+      
     end
   end
 end

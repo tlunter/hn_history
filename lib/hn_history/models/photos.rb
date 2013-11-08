@@ -8,7 +8,7 @@ module HnHistory
       property :site, String, length: 255, index: true
       property :upvotes, Integer
       property :position, Integer
-      property :created_at, DateTime
+      property :created_at, DateTime, index: true
 
       belongs_to :entry
     end

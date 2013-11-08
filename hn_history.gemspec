@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "clockwork"
   spec.add_dependency "daemons"
+  spec.add_dependency "dm-aggregates"
   spec.add_dependency "dm-core"
   spec.add_dependency "dm-redis-adapter"
   spec.add_dependency "factory_girl"

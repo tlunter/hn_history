@@ -50,8 +50,8 @@ module.exports = function(grunt) {
     },
     watch: {
       all: {
-        files: ['<%= concat.js.src %>', '<%= concat.css.src %>'],
-        tasks: ['concat:js', 'concat:css', 'recess:dist', 'recess:min', 'timestamp']
+        files: ['assets/js/**/*.js', '<%= concat.css.src %>'],
+        tasks: ['copy:assets','concat:css', 'recess:dist', 'recess:min', 'timestamp']
       }
     },
     recess: {
