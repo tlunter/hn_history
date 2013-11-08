@@ -1,0 +1,9 @@
+{
+  "author": "Todd Lunter",
+  "name": "hn_history",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": ">= 0.5.1",
+    "jquery": ">= 2.0.3"
+  }
+}
