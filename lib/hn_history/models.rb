@@ -1,4 +1,4 @@
-require 'hn_history/models/entries'
-require 'hn_history/models/photos'
+require 'hn_history/models/entry'
+require 'hn_history/models/photo'
 
 DataMapper.finalize

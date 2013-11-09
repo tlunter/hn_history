@@ -1,16 +1,16 @@
 module HnHistory
   module Models
-    class Photo
+    class Entry
       include DataMapper::Resource
 
       property :id, Serial
+      property :entry_id, Integer
       property :title, String, length: 255, index: true
       property :site, String, length: 255, index: true
       property :upvotes, Integer
       property :position, Integer
-      property :created_at, DateTime, index: true
 
-      belongs_to :entry
+      belongs_to :photo
     end
   end
 end

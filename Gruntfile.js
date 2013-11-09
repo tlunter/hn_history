@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-react');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -27,15 +28,45 @@ module.exports = function(grunt) {
           }
         ]
       },
+      underscore: {
+        files: [
+          {
+            expand:true,
+            cwd: 'bower_components/underscore/',
+            src: ['underscore.js'],
+            dest: 'lib/hn_history/public/js/'
+          }
+        ]
+      },
+      reqwest: {
+        files: [
+          {
+            expand:true,
+            cwd: 'bower_components/reqwest/',
+            src: ['reqwest.js'],
+            dest: 'lib/hn_history/public/js/'
+          }
+        ]
+      },
       assets: {
         files: [
           {
             expand: true,
             cwd: 'assets/js/',
             src: ['**/*.js'],
-            dest: 'lib/hn_history/public/js/'
+            dest: 'tmp/js'
           }
         ]
+      }
+    },
+    react: {
+      app: {
+        options: {
+          extension: 'jsx'
+        },
+        files: {
+          'tmp/js': 'assets/jsx'
+        }
       }
     },
     concat: {
@@ -47,11 +78,15 @@ module.exports = function(grunt) {
         src: ['assets/less/**/*.less'],
         dest: 'tmp/less/<%= pkg.name %>.less'
       },
+      js: {
+        src: ['tmp/js/**/*.js'],
+        dest: 'lib/hn_history/public/js/hn_history.js'
+      }
     },
     watch: {
       all: {
         files: ['assets/js/**/*.js', '<%= concat.css.src %>'],
-        tasks: ['copy:assets','concat:css', 'recess:dist', 'recess:min', 'timestamp']
+        tasks: ['copy:assets', 'react:app', 'concat:css', 'concat:js', 'recess:dist', 'recess:min', 'timestamp']
       }
     },
     recess: {
@@ -74,7 +109,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['copy', 'concat', 'recess']);
+  grunt.registerTask('default', ['copy', 'react', 'concat', 'recess']);
 
   grunt.registerTask('timestamp', function() {
     grunt.log.subhead(Date());

@@ -1,0 +1,23 @@
+module HnHistory
+  Clockwork.every(5.minutes, 'photos.new') do
+    current_time = Time.now
+
+    puts "Photo for: #{current_time.xmlschema(3)}"
+
+    photo = HnHistory::Models::Photo.new
+    photo.created_at = current_time
+    photo.save
+
+    entries = RubyHackernews::Entry.all.select(&:id)
+    entries.map do |e|
+      entry = HnHistory::Models::Entry.new
+      entry.entry_id = e.id
+      entry.title = e.link.title
+      entry.site = e.link.site
+      entry.upvotes = e.voting.score
+      entry.position = e.number
+      entry.photo = photo
+      entry.save
+    end
+  end
+end

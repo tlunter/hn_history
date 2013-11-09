@@ -1,1 +1,1 @@
-require 'hn_history/jobs/entries'
+require 'hn_history/jobs/photos'
