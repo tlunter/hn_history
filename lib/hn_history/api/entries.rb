@@ -4,7 +4,7 @@ class Entries < Grape::API
   namespace :entries do
     helpers do
       def photo
-        @photo ||= HnHistory::Models::Photo.find(params[:id])
+        @photo ||= HnHistory::Models::Photo.first(id: params[:id])
       end
 
       def require_photo!

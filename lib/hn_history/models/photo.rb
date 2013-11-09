@@ -6,7 +6,7 @@ module HnHistory
       property :id, Serial
       property :created_at, DateTime, index: true
 
-      has n, :entry
+      has n, :entries
     end
   end
 end
