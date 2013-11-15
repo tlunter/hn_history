@@ -11,9 +11,10 @@ Models.Model = function(superClass) {
       reqwest({
         url: this.rootUrl,
         method: 'get',
-        success: function (resp) {
-          this.setProperties(resp);
-        }
+        success: (function (resp) {
+          this.setProperties(resp[0]);
+          this.fire('loaded');
+        }).bind(this)
       });
     },
     setProperties: function(properties) {

@@ -16,6 +16,9 @@ Models.ModelList = function(superClass) {
           this.items = resp.map(function (item) {
             return new this.model(item);
           }, this);
+          if (typeof(success) === 'function') {
+            success();
+          }
           this.fire('loaded');
         }).bind(this)
       });

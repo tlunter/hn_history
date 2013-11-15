@@ -4,11 +4,11 @@ class Entries < Grape::API
   namespace :entries do
     helpers do
       def photo
-        @photo ||= HnHistory::Models::Photo.first(id: params[:id])
+        @photo ||= HnHistory::Models::Photo.first(created_at: params[:id])
       end
 
       def require_photo!
-        photo || error!(400, 'No photo for this id')
+        photo || error!('No photo for this id', 400)
       end
     end
 

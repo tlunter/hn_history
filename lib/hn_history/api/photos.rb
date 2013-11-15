@@ -12,7 +12,7 @@ class Photos < Grape::API
       end
 
       def require_photo_for_time!
-        photo_for_time || error!(400, "No photo for this time")
+        photo_for_time || error!("No photo for this time", 400)
       end
     end
 
@@ -33,7 +33,9 @@ class Photos < Grape::API
     get ":time" do
       require_photo_for_time!
 
-      present photo_for_time, with: Entities::Photo
+      puts "photo_for_time: #{photo_for_time}"
+
+      present [photo_for_time], with: Entities::Photo
     end
   end
 end

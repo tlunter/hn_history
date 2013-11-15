@@ -1,19 +1,19 @@
 /** @jsx React.DOM */
+var Views = Views || {};
 Views.PhotoList = React.createClass({
-  modelList: new Models.PhotoList('/api/photos/latest'),
-  loadPhotos: function() {
-    this.modelList.on('loaded', this.setItems);
-    this.modelList.load();
-  },
   setItems: function() {
-    this.setState({ items: this.modelList.items });
+    this.setState({ items: this.props.modelList.items });
   },
   getInitialState: function() {
     return { items: [] };
   },
   componentWillMount: function() {
-    this.loadPhotos();
-    setInterval(this.loadPhotos, 2000);
+    var modelList = this.props.modelList;
+
+    modelList.on('loaded', this.setItems);
+  },
+  componentDidMount: function() {
+    this.props.modelList.load();
   },
   render: function() {
     var P = Views.Photo;
