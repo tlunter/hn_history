@@ -3,16 +3,17 @@ require 'hn_history/api/entities/photos'
 class Photos < Grape::API
   namespace :photos do
     helpers do
-      def photo_for_time
+      def photos_for_time
         time = params[:time]
-        @photo ||= HnHistory::Models::Photo.last(
-          :created_at.lt => (time + 300),
-          :created_at.gt => (time - 300)
+        @photo ||= HnHistory::Models::Photo.all(
+          :created_at.lt => (time + 3600),
+          :created_at.gt => (time - 3600),
+          :order => [ :created_at.asc ]
         )
       end
 
-      def require_photo_for_time!
-        photo_for_time || error!("No photo for this time", 400)
+      def require_photos_for_time!
+        !photos_for_time.empty? || error!("No photo for this time", 400)
       end
     end
 
@@ -21,21 +22,14 @@ class Photos < Grape::API
       present HnHistory::Models::Photo.all, with: Entities::Photo
     end
 
-    desc "Get the latest page"
-    get "latest" do
-      present [HnHistory::Models::Photo.last], with: Entities::Photo
-    end
-
     desc "Get photo around time"
     params do
       requires :time, type: Integer, desc: "Timestamp in integer form"
     end
     get ":time" do
-      require_photo_for_time!
+      require_photos_for_time!
 
-      puts "photo_for_time: #{photo_for_time}"
-
-      present [photo_for_time], with: Entities::Photo
+      present photos_for_time, with: Entities::Photo
     end
   end
 end

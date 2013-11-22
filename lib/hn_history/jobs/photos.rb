@@ -4,11 +4,14 @@ module HnHistory
 
     puts "Photo for: #{current_time.xmlschema(3)}"
 
+    entries = RubyHackernews::Entry.all.select(&:id)
+
+    return if entries.length == 0
+
     photo = HnHistory::Models::Photo.new
     photo.created_at = current_time.to_i
     photo.save
 
-    entries = RubyHackernews::Entry.all.select(&:id)
     entries.map do |e|
       entry = HnHistory::Models::Entry.new
       entry.entry_id = e.id
