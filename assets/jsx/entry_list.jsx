@@ -27,7 +27,9 @@ Views.EntryList = React.createClass({
       return <E entry={entry} />;
     });
     return (
-      <div>{entryNodes}</div>
+      <div className="pure-g-r entry_list">
+        {entryNodes}
+      </div>
     );
   }
 });

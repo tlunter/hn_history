@@ -18,20 +18,10 @@ module.exports = function(grunt) {
           }
         ]
       },
-      jquery: {
-        files: [
-          {
-            expand:true,
-            cwd: 'bower_components/jquery/',
-            src: ['jquery.js'],
-            dest: 'lib/hn_history/public/js/'
-          }
-        ]
-      },
       underscore: {
         files: [
           {
-            expand:true,
+            expand: true,
             cwd: 'bower_components/underscore/',
             src: ['underscore.js'],
             dest: 'lib/hn_history/public/js/'
@@ -41,10 +31,20 @@ module.exports = function(grunt) {
       reqwest: {
         files: [
           {
-            expand:true,
+            expand: true,
             cwd: 'bower_components/reqwest/',
             src: ['reqwest.js'],
             dest: 'lib/hn_history/public/js/'
+          }
+        ]
+      },
+      purecss: {
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/purecss/src/',
+            src: ['**/*.css'],
+            dest: 'tmp/purecss'
           }
         ]
       },
@@ -77,6 +77,10 @@ module.exports = function(grunt) {
       css: {
         src: ['assets/less/**/*.less'],
         dest: 'tmp/less/<%= pkg.name %>.less'
+      },
+      purecss: {
+        src: ['tmp/purecss/**/*.css'],
+        dest: 'lib/hn_history/public/css/pure.css'
       },
       js: {
         src: ['tmp/js/**/*.js'],

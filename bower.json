@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "dependencies": {
     "react": ">= 0.5.1",
-    "jquery": ">= 2.0.3",
     "underscore": ">= 0",
-    "reqwest": ">= 0"
+    "reqwest": ">= 0",
+    "purecss": "~0.3.0"
   }
 }

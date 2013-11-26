@@ -3,6 +3,7 @@ module Entities
     expose :id
     expose :title
     expose :site
+    expose :link
     expose :upvotes
     expose :position
   end
