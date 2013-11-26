@@ -16,6 +16,7 @@ module HnHistory
       entry = HnHistory::Models::Entry.new
       entry.entry_id = e.id
       entry.title = e.link.title
+      entry.link = e.link.href
       entry.site = e.link.site
       entry.upvotes = e.voting.score
       entry.position = e.number

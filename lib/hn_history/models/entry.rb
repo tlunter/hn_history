@@ -7,6 +7,7 @@ module HnHistory
       property :entry_id, Integer
       property :title, String, length: 255, index: true
       property :site, String, length: 255, index: true
+      property :link, String, length: 255, index: true
       property :upvotes, Integer
       property :position, Integer
 
