@@ -11,7 +11,7 @@ Views.Photo = React.createClass({
     var EL = Views.EntryList;
     var date = new Date(this.props.model.created_at * 1000);
     return (
-        <option value={this.props.model.created_at}>{date.toLocaleString()}</option>
+        <div>{date.toLocaleString()}</div>
     );
   }
 });
