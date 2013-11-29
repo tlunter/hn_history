@@ -8,10 +8,10 @@ Views.Photo = React.createClass({
     this.setState({ item: this.props.model });
   },
   render: function() {
-    var EL = Views.EntryList;
-    var date = new Date(this.props.model.created_at * 1000);
-    return (
-        <div>{date.toLocaleString()}</div>
-    );
+    if (this.props.model !== undefined) {
+      var date = new Date(this.props.model.created_at * 1000);
+      return (<div>{date.toLocaleString()}</div>);
+    }
+    return (<div />);
   }
 });

@@ -7,7 +7,6 @@ Views.App = React.createClass({
     };
   },
   setRealTime: function(newTime) {
-    console.log("Real Time: " + newTime);
     this.setState({realTime: newTime});
   },
   render: function() {

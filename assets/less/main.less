@@ -2,6 +2,19 @@ html {
   background: #f6f6f6;
 }
 
+div.photo_list {
+  & > * {
+    width: 33%;
+    display: inline-block;
+  }
+  & > *:last-child {
+    text-align: right;
+  }
+  & > *:nth-child(2) {
+    text-align: center;
+  }
+}
+
 div.entry_list {
   & > div {
     display: inline-block;
