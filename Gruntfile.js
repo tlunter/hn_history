@@ -48,6 +48,16 @@ module.exports = function(grunt) {
           }
         ]
       },
+      d3: {
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/d3/',
+            src: ['d3.js'],
+            dest: 'lib/hn_history/public/js/'
+          }
+        ]
+      },
       assets: {
         files: [
           {
@@ -89,7 +99,7 @@ module.exports = function(grunt) {
     },
     watch: {
       all: {
-        files: ['assets/js/**/*.js', '<%= concat.css.src %>'],
+        files: ['assets/js/**/*.js', 'assets/jsx/**/*.jsx', '<%= concat.css.src %>'],
         tasks: ['copy:assets', 'react:app', 'concat:css', 'concat:js', 'recess:dist', 'recess:min', 'timestamp']
       }
     },

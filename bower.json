@@ -6,6 +6,7 @@
     "react": ">= 0.5.1",
     "underscore": ">= 0",
     "reqwest": ">= 0",
-    "purecss": "~0.3.0"
+    "purecss": "~0.3.0",
+    "d3": "~3.3.12"
   }
 }
