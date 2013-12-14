@@ -2,6 +2,11 @@ html {
   background: #f6f6f6;
 }
 
+#content {
+  width: 900px;
+  margin: 0 auto;
+}
+
 div.photo_list {
   & > * {
     width: 33%;
@@ -19,11 +24,30 @@ div.entry_list {
   & > div {
     display: inline-block;
     vertical-align: top;
+    position: relative;
 
     div.entry {
       margin: 5px;
-      padding: 5px;
+      padding: 10px;
       background: #e1e2e8;
+      height: 40px;
+      position: relative;
+
+      & > div {
+        display: inline-block;
+      }
+
+      div.position {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 25px;
+        vertical-align: top;
+      }
+
+      div.title {
+        width: ~"calc(100%-25px);"
+      }
     }
   }
 }

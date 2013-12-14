@@ -68,7 +68,7 @@ Views.PhotoList = React.createClass({
   },
   render: function() {
     var P = Views.Photo;
-    var photo = <P model={this.current()} />;
+    var photo = <P created_at={this.state.current} />;
     return (
       <div className="photo_list">
         <div><button onClick={this.previous}>Previous</button></div>
