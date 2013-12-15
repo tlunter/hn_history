@@ -2,7 +2,7 @@ require 'ruby-hackernews'
 require 'resque'
 require 'clockwork'
 require 'dm-core'
-require 'dm-redis-adapter'
+require 'dm-mysql-adapter'
 require 'dm-aggregates'
 
 DataMapper.setup(:default, 'mysql://hn_history:@localhost/hn_history')

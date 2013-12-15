@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dm-core"
   spec.add_dependency "dm-migrations"
   spec.add_dependency "dm-mysql-adapter"
-  spec.add_dependency "dm-redis-adapter"
   spec.add_dependency "factory_girl"
   spec.add_dependency "foreman"
   spec.add_dependency "grape"
