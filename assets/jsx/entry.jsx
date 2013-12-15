@@ -12,7 +12,7 @@ Views.Entry = React.createClass({
             </a>
           </div>
           <div className="links">
-            <ul>
+            <ul className="nav">
               <li>
                 <a href={"http://news.ycombinator.com/item?id=" + this.props.entry.entry_id}>
                   Comments 

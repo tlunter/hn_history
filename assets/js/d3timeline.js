@@ -25,9 +25,9 @@ var drawTimeline = function(entries, node) {
      .data([val_array])
      .append("svg")
      .attr("width", w + p * 2)
-     .attr("height", h + p * 2)
+     .attr("height", h + p + 5)
      .append("g")
-       .attr("transform", "translate(" + p + "," + p + ")");
+       .attr("transform", "translate(" + p + ",5)");
 
   var xAxis = d3.svg.axis()
     .scale(xTime)

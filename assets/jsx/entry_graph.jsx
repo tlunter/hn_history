@@ -3,7 +3,12 @@ var Views = Views || {};
 Views.EntryGraph = React.createClass({
   setItems: function () {
     drawTimeline(this.props.modelList.items, "#timeline");
-    this.setState({ title: this.props.modelList.items[0].title });
+    this.setState({
+      title: this.props.modelList.items[0].title,
+      entryId: this.props.modelList.items[0].entry_id
+    });
+    var timeline = document.querySelector("#timeline");
+    timeline.scrollLeft = timeline.scrollWidth;
   },
   getInitialState: function() {
     return { title: "" };
@@ -27,7 +32,18 @@ Views.EntryGraph = React.createClass({
       <div>
         <div className="center">
           <h1>{this.state.title}</h1>
-          <a href="/">Front Page</a>
+        </div>
+        <div className="center">
+          <ul className="nav">
+            <li>
+              <a href="/">Front Page</a>
+            </li>
+            <li>
+              <a href={"http://news.ycombinator.com/item?id=" + this.state.entryId}>
+                Comments
+              </a>
+            </li>
+          </ul>
         </div>
         <div id="timeline">
         </div>
