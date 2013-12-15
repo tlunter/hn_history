@@ -5,7 +5,8 @@ Views.EntryGraph = React.createClass({
     drawTimeline(this.props.modelList.items, "#timeline");
     this.setState({
       title: this.props.modelList.items[0].title,
-      entryId: this.props.modelList.items[0].entry_id
+      entryId: this.props.modelList.items[0].entry_id,
+      link: this.props.modelList.items[0].link
     });
     var timeline = document.querySelector("#timeline");
     timeline.scrollLeft = timeline.scrollWidth;
@@ -31,10 +32,13 @@ Views.EntryGraph = React.createClass({
     return (
       <div>
         <div className="center">
-          <h1>{this.state.title}</h1>
+          <h1><a href={this.state.link}>{this.state.title}</a></h1>
         </div>
         <div className="center">
           <ul className="nav">
+            <li>
+              <a href={this.state.link}>Link</a>
+            </li>
             <li>
               <a href="/">Front Page</a>
             </li>
