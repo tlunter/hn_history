@@ -1,20 +1,22 @@
 <html>
   <head>
-    <link rel="stylesheet" href="/css/hn_history.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/pure.css" />
+    <link rel="stylesheet" href="/css/hn_history.css" />
   </head>
   <body>
     <div id="content">
     </div>
+    <script src="/js/d3.js"></script>
+    <script src="/js/aviator.js"></script>
     <script src="/js/react.js"></script>
     <script src="/js/reqwest.js"></script>
     <!-- <script src="/js/JSXTransformer.js"></script> -->
     <script src="/js/underscore.js"></script>
     <script src="/js/hn_history.js"></script>
     <script>
-      React.renderComponent(
-        Views.App(), document.querySelector('#content')
-      );
+      var CONTENT_NODE = document.querySelector('#content');
+      var app = new App().dispatch();
     </script>
   </body>
 </html>

@@ -58,6 +58,16 @@ module.exports = function(grunt) {
           }
         ]
       },
+      aviator: {
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/aviator/',
+            src: ['aviator.js'],
+            dest: 'lib/hn_history/public/js/'
+          }
+        ]
+      },
       assets: {
         files: [
           {

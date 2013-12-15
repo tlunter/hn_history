@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 var Views = Views || {};
-Views.App = React.createClass({
+Views.FrontPage = React.createClass({
   getInitialState: function() {
     return {
       realTime: ((new Date()).getTime() / 1000).toFixed()

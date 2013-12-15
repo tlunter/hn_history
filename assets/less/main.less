@@ -1,5 +1,13 @@
 html {
-  background: #f6f6f6;
+  background: #fefefe;
+  font-family: "Open Sans Condensed";
+  font-weight: 300;
+}
+
+html, input, button, textarea, div, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
+  font-family: "Open Sans Condensed";
+  font-weight: 300;
+  font-size: 18px;
 }
 
 #content {
@@ -28,25 +36,50 @@ div.entry_list {
 
     div.entry {
       margin: 5px;
-      padding: 10px;
+      padding: 15px;
       background: #e1e2e8;
-      height: 40px;
+      height: 60px;
       position: relative;
 
       & > div {
         display: inline-block;
+        width: ~"calc(100%-40px);";
+
+        & > div {
+          display: block;
+        }
+
+        div.title {
+        }
+        
+        div.links {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+              padding: 0 5px;
+              display: inline-block;
+            }
+          }
+        }
       }
 
       div.position {
         top: 0;
         bottom: 0;
         left: 0;
-        width: 25px;
+        padding-right: 15px;
+        width: 40px;
+        text-align: right;
         vertical-align: top;
-      }
-
-      div.title {
-        width: ~"calc(100%-25px);"
+        font-size: 56px;
+        line-height: 52px;
       }
     }
   }
@@ -56,5 +89,38 @@ a {
   color: #000000;
   &:hover {
     text-decoration: none;
+  }
+}
+
+.center {
+  text-align: center;
+  width: 100%;
+}
+
+#timeline {
+  overflow: auto;
+  text-align: center;
+
+  circle {
+    fill: #3696d6;
+    stroke: #2180bf;
+  }
+
+  .line {
+    fill: none;
+    stroke: #3696d6;
+    stroke-width: 3.5px;
+  }
+
+  .axis path,
+  .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+  }
+
+  .axis text {
+      font-family: sans-serif;
+      font-size: 12px;
   }
 }

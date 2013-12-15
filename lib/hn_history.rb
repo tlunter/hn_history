@@ -5,7 +5,7 @@ require 'dm-core'
 require 'dm-redis-adapter'
 require 'dm-aggregates'
 
-DataMapper.setup(:default, {:adapter  => "redis"})
+DataMapper.setup(:default, 'mysql://hn_history:@localhost/hn_history')
 
 module Clockwork
   handler do |job|
