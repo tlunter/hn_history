@@ -84,9 +84,14 @@ module.exports = function(grunt) {
         options: {
           extension: 'jsx'
         },
-        files: {
-          'tmp/js': 'assets/jsx'
-        }
+        files: [
+          {
+            expand: true,
+            cwd: 'assets/jsx/',
+            src: ['**/*.jsx'],
+            dest: 'tmp/js'
+          }
+        ]
       }
     },
     concat: {
@@ -103,7 +108,7 @@ module.exports = function(grunt) {
         dest: 'lib/hn_history/public/css/pure.css'
       },
       js: {
-        src: ['tmp/js/**/*.js'],
+        src: ['tmp/js/**/*.js', 'tmp/js/**/*.jsx'],
         dest: 'lib/hn_history/public/js/hn_history.js'
       }
     },
