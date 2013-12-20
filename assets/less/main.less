@@ -11,20 +11,29 @@ html, input, button, textarea, div, .pure-g [class*="pure-u"], .pure-g-r [class*
 }
 
 #content {
-  width: 900px;
+  width: 100%;
   margin: 0 auto;
+
+  @media (min-width: 900px) {
+    width: 900px;
+  }
 }
 
-div.photo_list {
-  & > * {
-    width: 33%;
+div.photo-list {
+  & > div {
     display: inline-block;
   }
-  & > *:last-child {
-    text-align: right;
-  }
-  & > *:nth-child(2) {
+
+  div.photo {
     text-align: center;
+  }
+
+  div.left { 
+    text-align: left;
+  }
+
+  div.right { 
+    text-align: right;
   }
 }
 

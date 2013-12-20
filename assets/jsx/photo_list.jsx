@@ -70,10 +70,10 @@ Views.PhotoList = React.createClass({
     var P = Views.Photo;
     var photo = <P created_at={this.state.current} />;
     return (
-      <div className="photo_list">
-        <div><button onClick={this.previous}>Previous</button></div>
-        {photo}
-        <div><button onClick={this.next}>Next</button></div>
+      <div className="photo-list pure-g">
+        <div className="left pure-u-1-5"><button onClick={this.previous}>Previous</button></div>
+        <div className="photo pure-u-3-5">{photo}</div>
+        <div className="right pure-u-1-5"><button onClick={this.next}>Next</button></div>
       </div>
     );
   }

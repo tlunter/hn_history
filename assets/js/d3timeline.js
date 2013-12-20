@@ -58,7 +58,7 @@ var drawTimeline = function(entries, node) {
   var line = d3.svg.line()
     .x(function(d) { return xTime(d.created_at) })
     .y(function(d) { return y(d.y) })
-    .interpolate('linear');
+    .interpolate('cardinal');
 
   vis.append("path")
     .datum(val_array)
