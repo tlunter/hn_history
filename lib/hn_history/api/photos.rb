@@ -5,11 +5,26 @@ class Photos < Grape::API
     helpers do
       def photos_for_time
         time = params[:time]
-        @photo ||= HnHistory::Models::Photo.all(
-          :created_at.lt => (time + 3600),
-          :created_at.gt => (time - 3600),
-          :order => [ :created_at.asc ]
-        )
+        @photo ||= begin
+          photo = HnHistory::Models::Photo.first(
+            :created_at.lt => (time + 3600),
+            :created_at.gt => (time - 3600),
+            :order => [ :created_at.asc ]
+          )
+          photo ||= HnHistory::Models::Photo.last
+
+          before = HnHistory::Models::Photo.all(
+            :created_at.lt => photo.created_at,
+            :limit => 15,
+            :order => [ :created_at.asc ]
+          )
+          after = HnHistory::Models::Photo.all(
+            :created_at.gt => photo.created_at,
+            :limit => 15,
+            :order => [ :created_at.asc ]
+          )
+          before + [ photo ] + after
+        end
       end
 
       def require_photos_for_time!
