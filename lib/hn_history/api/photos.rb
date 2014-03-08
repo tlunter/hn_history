@@ -16,7 +16,7 @@ class Photos < Grape::API
           before = HnHistory::Models::Photo.all(
             :created_at.lt => photo.created_at,
             :limit => 15,
-            :order => [ :created_at.asc ]
+            :order => [ :created_at.desc ]
           )
           after = HnHistory::Models::Photo.all(
             :created_at.gt => photo.created_at,
