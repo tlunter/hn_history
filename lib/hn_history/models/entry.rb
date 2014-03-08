@@ -4,7 +4,7 @@ module HnHistory
       include DataMapper::Resource
 
       property :id, Serial
-      property :entry_id, Integer
+      property :entry_id, Integer, index: true
       property :title, String, length: 255, index: true
       property :site, String, length: 255, index: true
       property :link, String, length: 255, index: true
