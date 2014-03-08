@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "foreman"
   spec.add_dependency "grape"
   spec.add_dependency "grape-entity"
+  spec.add_dependency "oboe"
   spec.add_dependency "ruby-hackernews"
   spec.add_dependency "resque"
   spec.add_dependency "sinatra"
