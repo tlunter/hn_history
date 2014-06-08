@@ -2,7 +2,7 @@ require 'sinatra'
 
 module HnHistory
   class Web < Sinatra::Base
-    get '*' do
+    get %r{^(?!/api).+} do
       erb :"index.html"
     end
   end
