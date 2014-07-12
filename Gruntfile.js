@@ -42,9 +42,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'bower_components/purecss/src/',
-            src: ['**/*.css'],
-            dest: 'tmp/purecss'
+            cwd: 'bower_components/pure/',
+            src: ['pure.css'],
+            dest: 'lib/hn_history/public/css/'
           }
         ]
       },
@@ -81,15 +81,13 @@ module.exports = function(grunt) {
     },
     react: {
       app: {
-        options: {
-          extension: 'jsx'
-        },
         files: [
           {
             expand: true,
             cwd: 'assets/jsx/',
             src: ['**/*.jsx'],
-            dest: 'tmp/js'
+            dest: 'tmp/js',
+            ext: '.jsx'
           }
         ]
       }
@@ -102,10 +100,6 @@ module.exports = function(grunt) {
       css: {
         src: ['assets/less/**/*.less'],
         dest: 'tmp/less/<%= pkg.name %>.less'
-      },
-      purecss: {
-        src: ['tmp/purecss/**/*.css'],
-        dest: 'lib/hn_history/public/css/pure.css'
       },
       js: {
         src: ['tmp/js/**/*.js', 'tmp/js/**/*.jsx'],

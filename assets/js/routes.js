@@ -5,10 +5,8 @@ Routes.prototype.dispatch = function(targets) {
   Aviator.setRoutes({
     target: targets.appRouteTarget,
     '/': 'frontpage',
-    '/timeline': {
-      target: targets.appRouteTarget,
-      '/:entry_id': 'timeline'
-    }
+    '/time/:photo_id': 'photo',
+    '/graph/:entry_id': 'timeline'
   });
 
   Aviator.dispatch();

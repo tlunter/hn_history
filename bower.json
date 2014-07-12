@@ -3,11 +3,11 @@
   "name": "hn_history",
   "version": "1.0.0",
   "dependencies": {
-    "react": ">= 0.5.1",
+    "react": ">= 0",
     "underscore": ">= 0",
     "reqwest": ">= 0",
-    "purecss": "~0.3.0",
+    "pure": "~0.4.0",
     "d3": "~3.3.12",
-    "aviator": "~0.3.12"
+    "aviator": ">= 0"
   }
 }
