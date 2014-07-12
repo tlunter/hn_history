@@ -3,15 +3,19 @@ var Views = Views || {};
 Views.PhotoList = React.createClass({
   setItems: function() {
     var ml = this.props.modelList.items;
-    if (ml.length > 0 && this.state.current === undefined) {
-      var current = ml[ml.length-1].created_at;
-      this.props.handler(current);
-      this.setState({current: current});
+    if (ml.length > 0) {
+      for (i = 0; i < ml.length; i++) {
+        if (this.props.time == ml[i].created_at) {
+          return this.setState({
+            items: ml
+          });
+        }
+      }
+
+      console.log(ml[ml.length-1].created_at);
+      Aviator.navigate('/time/' + ml[ml.length-1].created_at);
     }
 
-    this.setState({
-      items: ml
-    });
   },
   getInitialState: function() {
     return {
@@ -21,6 +25,9 @@ Views.PhotoList = React.createClass({
   componentDidMount: function() {
     this.loadModelList(this.props);
     document.addEventListener('keypress', this.onKeyPress);
+  },
+  componentWillUnmount: function() {
+    document.removeEventListener('keypress', this.onKeyPress);
   },
   componentWillReceiveProps: function(nextProps) {
     this.loadModelList(nextProps);
@@ -38,16 +45,9 @@ Views.PhotoList = React.createClass({
       this.next();
     }
   },
-  current: function () {
-    for (i = 0; i < this.state.items.length; i++) {
-      if (this.state.current === this.state.items[i].created_at) {
-        return this.state.items[i];
-      }
-    }
-  },
   currentIndex: function () {
     for (i = 0; i < this.state.items.length; i++) {
-      if (this.state.current === this.state.items[i].created_at) {
+      if (this.props.time == this.state.items[i].created_at) {
         return i;
       }
     }
@@ -55,20 +55,18 @@ Views.PhotoList = React.createClass({
   previous: function(e) {
     var newCurrent = this.state.items[this.currentIndex() - 1];
     if (newCurrent) {
-      this.setState({current: newCurrent.created_at});
-      this.props.handler(newCurrent.created_at);
+      Aviator.navigate('/time/' + newCurrent.created_at);
     }
   },
   next: function(e) {
     var newCurrent = this.state.items[this.currentIndex() + 1];
     if (newCurrent) {
-      this.setState({current: newCurrent.created_at});
-      this.props.handler(newCurrent.created_at);
+      Aviator.navigate('/time/' + newCurrent.created_at);
     }
   },
   render: function() {
     var P = Views.Photo;
-    var photo = <P created_at={this.state.current} />;
+    var photo = <P created_at={this.props.time} />;
     return (
       <div className="photo-list pure-g">
         <div className="left pure-u-1-5"><button onClick={this.previous}>Previous</button></div>

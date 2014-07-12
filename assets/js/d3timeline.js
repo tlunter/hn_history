@@ -13,7 +13,7 @@ var drawTimeline = function(entries, node) {
   var yMaxValue = 30,
       yMinValue = 1;
 
-  var b = 15,
+  var b = 5,
       w = b * sampsize,
       h = 500,
       p = 80,
@@ -31,7 +31,7 @@ var drawTimeline = function(entries, node) {
 
   var xAxis = d3.svg.axis()
     .scale(xTime)
-    .ticks(sampsize / 4)
+    .ticks(sampsize / 8)
     .tickFormat(d3.time.format("%b %d %I:%M"));
 
   vis.append("g")
@@ -70,5 +70,5 @@ var drawTimeline = function(entries, node) {
      .enter().append("circle")
        .attr("cx", function(d) { return xTime(d.created_at); })
        .attr("cy", function(d) { return y(d.y); })
-       .attr("r", function(d) { return Math.sqrt( 45 / Math.PI); });
+       .attr("r", function(d) { return Math.sqrt( 5 / Math.PI); });
 };

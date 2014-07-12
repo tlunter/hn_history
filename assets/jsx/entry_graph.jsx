@@ -1,6 +1,11 @@
 /** @jsx React.DOM */
 var Views = Views || {};
 Views.EntryGraph = React.createClass({
+  goToHomepage: function (evt) {
+    evt.preventDefault();
+
+    Aviator.navigate('/');
+  },
   setItems: function () {
     drawTimeline(this.props.modelList.items, "#timeline");
     this.setState({
@@ -40,7 +45,7 @@ Views.EntryGraph = React.createClass({
               <a href={this.state.link}>Link</a>
             </li>
             <li>
-              <a href="/">Front Page</a>
+              <a href="/" onClick={this.goToHomepage}>Front Page</a>
             </li>
             <li>
               <a href={"http://news.ycombinator.com/item?id=" + this.state.entryId}>

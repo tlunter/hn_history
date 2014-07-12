@@ -30,6 +30,6 @@ module HnHistory
   end
 end
 
-Clockwork.every(5.minutes, 'photos.new') do
+Clockwork.every(30.seconds, 'photos.new') do
   HnHistory::Jobs.get_photo
 end

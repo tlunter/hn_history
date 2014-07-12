@@ -1,21 +1,14 @@
 /** @jsx React.DOM */
 var Views = Views || {};
 Views.FrontPage = React.createClass({
-  getInitialState: function() {
-    return {
-      realTime: ((new Date()).getTime() / 1000).toFixed()
-    };
-  },
-  setRealTime: function(newTime) {
-    this.setState({realTime: newTime});
-  },
   render: function() {
-    var TS = Views.TimeSelector;
+    var PL = Views.PhotoList;
     var EL = Views.EntryList;
-    var entryList = new Models.EntryList(this.state.realTime);
+    var photoList = new Models.PhotoList(this.props.time);
+    var entryList = new Models.EntryList(this.props.time);
     return (
       <div>
-        <TS handler={this.setRealTime} />
+        <PL modelList={photoList} time={this.props.time} />
         <EL modelList={entryList} />
       </div>
     );
