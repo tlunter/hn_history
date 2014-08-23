@@ -1,0 +1,8 @@
+FROM        hn_history:base
+MAINTAINER  Todd Lunter <tlunter@gmail.com>
+ADD         . /app
+RUN         cd /app && bundle install
+RUN         cd /app && npm install
+RUN         cd /app && bower install --allow-root
+RUN         cd /app && grunt
+CMD         cd /app && bundle exec foreman start web

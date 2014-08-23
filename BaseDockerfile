@@ -1,0 +1,13 @@
+FROM        base/arch
+MAINTAINER  Todd Lunter <tlunter@gmail.com>
+RUN         pacman -Syy
+RUN         pacman -S --noconfirm ruby git base-devel libmariadbclient nodejs
+RUN         gem install bundler --no-user-install
+RUN         npm update
+RUN         npm install -g grunt-cli bower
+ADD         . /app
+RUN         cd /app && bundle install
+RUN         cd /app && npm install
+RUN         cd /app && bower install --allow-root
+RUN         cd /app && grunt
+CMD         cd /app && bundle exec foreman start web
