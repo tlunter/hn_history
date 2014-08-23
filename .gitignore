@@ -21,3 +21,4 @@ node_modules
 bower_components
 lib/hn_history/public/js
 lib/hn_history/public/css
+Dockerfile
