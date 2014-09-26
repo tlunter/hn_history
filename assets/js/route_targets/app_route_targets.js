@@ -6,12 +6,14 @@ RouteTargets.AppRouteTargets = function() {
 
 RouteTargets.AppRouteTargets.prototype = {
   frontpage: function (request, options) {
-    Aviator.navigate('/time/' + ((new Date()).getTime() / 1000).toFixed());
+    var photoList = new Models.PhotoList();
+    this.showSection(Views.FrontPage({ modelList: photoList }));
   },
   photo: function (request, options) {
-    this.showSection(Views.FrontPage({time:request.params.photo_id}));
+    var photoList = new Models.PhotoList(request.params.photo_id);
+    this.showSection(Views.FrontPage({ modelList: photoList, time: request.params.photo_id }));
   },
   timeline: function (request, options) {
-    this.showSection(Views.Timeline({entryId: request.params.entry_id}));
+    this.showSection(Views.Timeline({ entryId: request.params.entry_id }));
   }
 };
