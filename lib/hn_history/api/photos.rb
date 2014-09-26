@@ -43,9 +43,11 @@ class Photos < Grape::API
       end
     end
 
-    desc "Get all photos"
+    desc "Get last 30 photos"
     get do
-      present HnHistory::Models::Photo.all, with: Entities::Photo
+      present HnHistory::Models::Photo.all(
+        :limit => 30, :order => [ :created_at.desc ]
+      ).to_a.reverse, with: Entities::Photo
     end
 
     desc "Get photo around time"
