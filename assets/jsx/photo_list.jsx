@@ -14,6 +14,8 @@ Views.PhotoList = React.createClass({
       this.next();
     } else if (e.keyCode == 102) {
       this.autoUpdate();
+    } else if (e.keyCode == 121) {
+      this.staticPage();
     }
   },
   currentIndex: function () {
@@ -36,8 +38,13 @@ Views.PhotoList = React.createClass({
     }
   },
   autoUpdate: function(e) {
-    if (!this.props.autoUpdate) {
+    if (!this.props.auto_update) {
       Aviator.navigate('/');
+    }
+  },
+  staticPage: function(e) {
+    if (this.props.auto_update) {
+      Aviator.navigate('/time/' + this.props.time);
     }
   },
   render: function() {
