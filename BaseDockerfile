@@ -1,7 +1,7 @@
 FROM        base/arch
 MAINTAINER  Todd Lunter <tlunter@gmail.com>
 RUN         pacman -Syy
-RUN         pacman -S --noconfirm ruby git base-devel libmariadbclient nodejs
+RUN         pacman -S --noconfirm ruby git base-devel libmariadbclient nodejs libunistring
 RUN         gem install bundler --no-user-install
 RUN         npm update
 RUN         npm install -g grunt-cli bower
